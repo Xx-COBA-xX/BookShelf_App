@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/colos.dart';
@@ -7,7 +8,10 @@ import '../../../data/model/book_model/book_model.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem(
-      {super.key, required this.book,  this.isBestSellerSection = false, this.isLendingSection = false});
+      {super.key,
+      required this.book,
+      this.isBestSellerSection = false,
+      this.isLendingSection = false});
   final Book book;
   final bool isBestSellerSection;
   final bool isLendingSection;
@@ -24,7 +28,7 @@ class BookItem extends StatelessWidget {
       ),
       margin: const EdgeInsets.only(left: 16),
       width: MediaQuery.of(context).size.width * x,
-      height: MediaQuery.of(context).size.height*0.12,
+      height: MediaQuery.of(context).size.height * 0.12,
       child: Row(
         children: [
           Expanded(
@@ -39,7 +43,7 @@ class BookItem extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: isLendingSection? 8: 4,
+            flex: isLendingSection ? 8 : 4,
             child: Container(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height / 80,
@@ -53,16 +57,16 @@ class BookItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
+                    book.authorName,
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontSize: MediaQuery.of(context).size.height / 60),
+                  ),
+                  Text(
                     book.title,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: MediaQuery.of(context).size.height / 50),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    book.authorName,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        fontSize: MediaQuery.of(context).size.height / 60),
                   ),
                   const Spacer(),
                   isBestSellerSection
